@@ -1,0 +1,37 @@
+@font-face {
+  font-family: 'Source Code Pro';
+  src: url('..//data/SourceCodePro-Bold.ttf') format('truetype');
+}
+@keyframes ani {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+@keyframes slide {
+  0%    { opacity: 0; transform:  translate(0, -10px); }
+  100%  { opacity: 1; transform:  translate(0, 0); }
+}
+body, html {
+  opacity: 0;
+  animation: ani 1.3s forwards ;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  
+}
+.custom-container {
+    background-color: white;
+    max-width: 1300px;
+    margin-right: auto;
+    margin-left: auto;
+    font-family: "Source Code Pro";
+    font-size: 22px; 
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+details[open] {
+  animation: slide 1s ease-in-out;
+}
+
+
+

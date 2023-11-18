@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xml:lang="zh">
+    <head>
+        <script src="scripts/jsmain.js"></script>
+        <style>
+            font {
+                font-weight: bolder;
+                font-size: 30pt;
+                line-height: 156%;
+                font-family: 'Source Code Pro';
+            }
+            .bottom_data {font-size: 25pt;}
+            .m-table{display: table; margin: auto; width: 306px; border-collapse: collapse;}
+            .m-tr{display: table-row;}
+            .m-td{display: table-cell; text-align: center; border: 4px solid #0000ff; vertical-align: middle; padding: 0; margin-left: 0; margin-right: 0;}
+            .cell-table{display: table; width: 100%; border-collapse: collapse;}
+            .cell-tr{display: table-row; border-collapse: collapse;}
+            .cell-td{display: table-cell; text-align: center; vertical-align: middle; border-collapse: collapse;}
+        </style>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
+              rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    </head>
+    <body>
+        <p align="center"><b>
+            {% for letter in title %}
+            <font color="{{letter.color}}">{{letter.text}}</font>
+            {% endfor %}
+        </b></p>
+        <div class="m-table">
+            {% for big_row in table %}
+            <div class="m-tr">
+                {% for big_cell in big_row %}
+                    <div class="m-td">
+                    <div class="cell-table">
+                        {% for row in big_cell %}
+                            <div class="cell-tr">
+                                {% for cell in row %}
+                                    <div class="cell-td">
+                                        <font color="{{cell.color}}">{{cell.text}}</font>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+        <br/>
+        {% for text in text_data %}
+            <p align="center"><font class='bottom_data'>{{text}}</font></p>
+        {% endfor %}
+
+        <form action="/result" method="post" onsubmit="setparams()" name="qimen">
+            <p align="center" style="line-height: 80%">
+                <strong>
+                    <input class="ctrlstyle" type="date" id="judate" name="judate" hidden="">
+                    <input class="ctrlstyle" type="hidden" id="jutime" name="jutime" value="10:43">
+                    <input class="ctrlstyle" type="hidden" id="jutype" name="jutype" value="0">
+                    <input class="ctrlstyle" type="hidden" id="jlongatude" name="jlongatude" value="37.5128064">
+                    <input class="ctrlstyle" type="hidden" id="jtz" name="jtz" value="Europe/Moscow">
+                    <input class="ctrlstyle" type="hidden" id="jminyear" name="jminyear" value="0"> 
+                    <input class="ctrlstyle" type="hidden" id="jfontsize" name="jfontsize" value="24">
+                    <input class="ctrlstyle" type="hidden" id="jlogin" name="jlogin">
+                    <input class="ctrlstyle" type="hidden" id="jpassword" name="jpassword">
+                    <input class="ctrlstyle" type="hidden" id="jtabletype" name="jtabletype" value="text">
+                    <input class="ctrlstyle" type="hidden" id="jouterstems" name="jouterstems" value="show">
+                    <input class="ctrlstyle" type="hidden" id="jouterstems_and_branches" name="jouterstems_and_branches" value="not_show">
+                    <input class="ctrlstyle" type="hidden" id="jdishen" name="jdishen" value="not_show">
+                    <input class="ctrlstyle" type="hidden" id="jtsyanmenanddishu" name="jtsyanmenanddishu" value="not_show">
+                    <input class="ctrlstyle" type="hidden" id="jbz" name="jbz" value="not_show">
+                    <input class="ctrlstyle" type="hidden" id="jinterp" name="jinterp" value="not_show">
+                    <input class="ctrlstyle" type="hidden" id="jbgcolor" name="jbgcolor" value="#ffffff">
+                    <input class="ctrlstyle" type="hidden" id="jstartype" name="jstartype" value="rot">
+                    <button class="btn btn-outline-primary btn-lg" type="submit" onclick="DateTimeStepBack()">&lt;&lt; шаг в прошлое </button>&nbsp;
+                    <button class="btn btn-outline-primary btn-lg" type="submit" onclick="DateTimeDefinded()">заданное время</button>&nbsp;
+                    <button class="btn btn-outline-primary btn-lg" type="submit" onclick="DateTimeSetToNow()">текущее время</button>&nbsp;
+                    <button class="btn btn-outline-primary btn-lg" type="submit" onclick="DateTimeStepForv()">шаг в будущее &gt;&gt;</button>
+                </strong> 
+            </p> 
+        </form>
+    </body>
+</html>

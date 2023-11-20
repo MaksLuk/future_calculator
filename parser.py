@@ -63,7 +63,6 @@ def parse(data):
     header = [i.replace('</font', '').replace('<font color="', '').split('">') for i in raw_header]
     if header[0][0] == 'В свободной версии доступен  диапазон ± 14 дней от текущей даты и  минутные расклады текущего дня.':
         return False, False, False
-
     header = [{'color': i[0], 'text': i[1].replace('>', '')} for i in header]
     
     splited2 = splited1[1].split('┣━━━━━━╋━━━━━━╋━━━━━━┫')
